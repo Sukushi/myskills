@@ -21,8 +21,6 @@ import java.util.Set;
 @Table(name = "t_quiz")
 public class Quiz extends AliasableEntity {
 	
-	private static final long serialVersionUID = 1L;
-	
 	private String name;
 	
 	@Enumerated(EnumType.STRING)

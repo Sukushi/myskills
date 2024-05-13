@@ -8,15 +8,35 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Set;
+
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 	Question findByText(String text);
 	
-	Page<Question> findByTextContainingIgnoreCase(String text, Pageable pageable);
+	/**
+	 * Recherche paginée des questions qui contiennent le mot clé dans leur texte
+	 * @param text
+	 * @param pageable
+	 * @return Une page de {@link Question} dont le texte contient le terme
+	 */
+	Page<Question> findByTextContaining(String text, Pageable pageable);
 	
+	/**
+	 * Retourne toutes les questions qui sont liées au quiz dont on passe l'id
+	 * @param quizId
+	 * @param pageable
+	 * @return Une page de {@link Question} liée à un Quiz
+	 */
 	@Query("SELECT q FROM Question q JOIN q.quizzes qu WHERE qu.id = :quizId")
 	Page<Question> findByQuizId(@Param("quizId") Long quizId, Pageable pageable);
 	
+	/**
+	 * Retourne toutes les questions qui sont liées au thème dont on passe l'id
+	 * @param themeId
+	 * @param pageable
+	 * @return Une page de {@link Question} liée à un Theme
+	 */
 	@Query("SELECT q FROM Question q JOIN q.themes t WHERE t.id = :themeId")
 	Page<Question> findByThemeId(@Param("themeId") Long themeId, Pageable pageable);
 }
