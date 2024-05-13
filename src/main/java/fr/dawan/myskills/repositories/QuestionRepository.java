@@ -8,11 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-	Question findByText(String text);
+	Optional<Question> findByText(String text);
 	
 	/**
 	 * Recherche paginée des questions qui contiennent le mot clé dans leur texte
