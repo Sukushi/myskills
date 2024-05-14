@@ -1,4 +1,4 @@
-package fr.dawan.myskills.dto;
+package fr.dawan.myskills.dtos;
 
 import lombok.Data;
 

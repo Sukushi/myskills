@@ -1,4 +1,4 @@
-package fr.dawan.myskills.dto;
+package fr.dawan.myskills.dtos;
 
 import fr.dawan.myskills.entities.Theme;
 import fr.dawan.myskills.entities.User;
@@ -7,7 +7,6 @@ import fr.dawan.myskills.entities.enums.LevelEnum;
 import fr.dawan.myskills.entities.enums.QuizStatusEnum;
 import lombok.*;
 
-import java.io.Serializable;
 import java.util.Set;
 
 

@@ -1,8 +1,6 @@
-package fr.dawan.myskills.dto;
+package fr.dawan.myskills.dtos;
 
 import lombok.*;
-
-import java.io.Serializable;
 
 
 @EqualsAndHashCode(callSuper = true)

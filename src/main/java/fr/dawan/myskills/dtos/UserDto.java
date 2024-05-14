@@ -1,11 +1,10 @@
-package fr.dawan.myskills.dto;
+package fr.dawan.myskills.dtos;
 
 import fr.dawan.myskills.entities.Authority;
 import fr.dawan.myskills.entities.UserResult;
 import fr.dawan.myskills.entities.enums.Title;
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;

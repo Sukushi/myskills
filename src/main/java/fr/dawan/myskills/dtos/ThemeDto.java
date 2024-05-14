@@ -1,9 +1,8 @@
-package fr.dawan.myskills.dto;
+package fr.dawan.myskills.dtos;
 
 import fr.dawan.myskills.entities.Theme;
 import lombok.*;
 
-import java.io.Serializable;
 import java.util.Set;
 
 

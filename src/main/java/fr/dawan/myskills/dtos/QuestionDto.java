@@ -1,4 +1,4 @@
-package fr.dawan.myskills.dto;
+package fr.dawan.myskills.dtos;
 
 import fr.dawan.myskills.entities.Quiz;
 import fr.dawan.myskills.entities.Theme;
@@ -8,7 +8,6 @@ import fr.dawan.myskills.entities.enums.QuestionStatusEnum;
 import fr.dawan.myskills.entities.enums.QuestionTypeEnum;
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
