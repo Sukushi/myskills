@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class QuizDto extends BaseEntityDto {
+public class QuizDto extends AliasableDto {
     private String name;
     private QuizStatusEnum status;
     private LevelEnum level;

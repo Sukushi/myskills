@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface QuizRepository extends JpaRepository<Quiz, Long>, AliasableRepository<Quiz> {
+public interface QuizRepository extends AliasableRepository<Quiz> {
 	Page<Quiz> findAllByTheme(Theme theme, Pageable pageable);
 	
 	/**

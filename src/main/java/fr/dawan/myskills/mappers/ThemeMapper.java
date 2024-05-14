@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface ThemeMapper extends GenericMapper<ThemeDto, Theme> {
+public interface ThemeMapper extends AliasableMapper<ThemeDto, Theme> {
 }

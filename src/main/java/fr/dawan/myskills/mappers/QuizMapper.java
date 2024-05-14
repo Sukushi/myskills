@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface QuizMapper extends GenericMapper<QuizDto, Quiz> {
+public interface QuizMapper extends AliasableMapper<QuizDto, Quiz> {
 }

@@ -13,6 +13,8 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public abstract class AliasableEntity extends BaseEntity {
+	// Category | Quiz | Theme
+	// les trois classes ont un alias qui sera géré de la même manière
 	
 	String alias;
 	

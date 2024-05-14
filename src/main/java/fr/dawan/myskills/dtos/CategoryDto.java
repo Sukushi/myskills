@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class CategoryDto extends BaseEntityDto {
+public class CategoryDto extends AliasableDto {
     private String name;
     private String description;
     private boolean visible;
