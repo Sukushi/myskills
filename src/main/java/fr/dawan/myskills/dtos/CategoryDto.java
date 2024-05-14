@@ -12,8 +12,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class CategoryDto extends AliasableDto {
+public class CategoryDto extends BaseEntityDto implements AliasableDto {
     private String name;
+	private String alias;
     private String description;
     private boolean visible;
     private Set<Theme> themes;

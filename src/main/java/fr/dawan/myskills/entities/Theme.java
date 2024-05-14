@@ -18,9 +18,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "t_theme")
-public class Theme extends AliasableEntity {
+public class Theme extends BaseEntity implements AliasableEntity {
 	
 	private String name;
+	private String alias;
 	
 	private String description;
 	

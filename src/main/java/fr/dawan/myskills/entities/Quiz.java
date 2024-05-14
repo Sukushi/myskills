@@ -19,9 +19,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "t_quiz")
-public class Quiz extends AliasableEntity {
+public class Quiz extends BaseEntity implements AliasableEntity {
 	
 	private String name;
+	private String alias;
 	
 	@Enumerated(EnumType.STRING)
 	private QuizStatusEnum status;

@@ -11,8 +11,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ThemeDto extends AliasableDto {
+public class ThemeDto extends BaseEntityDto implements AliasableDto {
     private String name;
+	private String alias;
     private String description;
     private String icon;
     private Theme themeParent;

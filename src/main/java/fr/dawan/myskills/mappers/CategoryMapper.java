@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface CategoryMapper extends AliasableMapper<CategoryDto, Category> {
+public interface CategoryMapper extends GenericMapper<CategoryDto, Category> {
 }

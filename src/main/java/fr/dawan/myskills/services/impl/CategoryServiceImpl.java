@@ -5,10 +5,18 @@ import fr.dawan.myskills.entities.Category;
 import fr.dawan.myskills.generic.GenericServiceImpl;
 import fr.dawan.myskills.mappers.CategoryMapper;
 import fr.dawan.myskills.repositories.CategoryRepository;
+import fr.dawan.myskills.services.AliasableService;
 import fr.dawan.myskills.services.CategoryService;
 
-public class CategoryServiceImpl extends AliasableServiceImpl<Category,CategoryDto,CategoryRepository,CategoryMapper> implements CategoryService {
+import java.util.Optional;
+
+public class CategoryServiceImpl extends GenericServiceImpl<Category,CategoryDto,CategoryRepository,CategoryMapper> implements CategoryService, AliasableService<CategoryDto> {
 	public CategoryServiceImpl(CategoryRepository repository, CategoryMapper mapper) {
 		super(repository, mapper);
+	}
+	
+	@Override
+	public Optional<CategoryDto> findByAlias(String alias) {
+		return repository.findByAlias(alias).map(mapper::toDto);
 	}
 }

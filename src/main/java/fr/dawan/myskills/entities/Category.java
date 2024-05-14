@@ -17,10 +17,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "t_categories")
-public class Category extends AliasableEntity {
+public class Category extends BaseEntity implements AliasableEntity {
 	
 	@Column(nullable = false)
 	private String name;
+	private String alias;
 	
 	@Column(length = 65535, columnDefinition = "Text", nullable = true)
 	private String description;
