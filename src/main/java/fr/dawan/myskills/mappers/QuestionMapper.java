@@ -2,7 +2,7 @@ package fr.dawan.myskills.mappers;
 
 import fr.dawan.myskills.dtos.QuestionDto;
 import fr.dawan.myskills.entities.Question;
-import fr.dawan.myskills.tools.GenericMapper;
+import fr.dawan.myskills.generic.GenericMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 

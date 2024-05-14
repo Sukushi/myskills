@@ -1,4 +1,4 @@
-package fr.dawan.myskills.tools;
+package fr.dawan.myskills.generic;
 
 public interface GenericMapper<D, E> {
     D toDto(E entity);
