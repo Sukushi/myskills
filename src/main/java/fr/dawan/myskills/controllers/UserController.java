@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static fr.dawan.myskills.constants.ParamConstants.PAGE_SIZE;
+
 @MultipartConfig
 @RestController
 @RequestMapping("/users")
@@ -35,7 +37,7 @@ public class UserController extends GenericController<UserDto, UserService> {
 	}
 	
 	@GetMapping("/authority/{authority}")
-	public ResponseEntity<Page<UserDto>> findAllByAuthority(@PathVariable String authority, @PageableDefault(size = 20, page = 0) Pageable page) {
+	public ResponseEntity<Page<UserDto>> findAllByAuthority(@PathVariable String authority, @PageableDefault(size = PAGE_SIZE) Pageable page) {
 		return ResponseEntity.ok(service.findAllByAuthority(authority,page));
 	}
 }

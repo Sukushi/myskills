@@ -6,12 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
+import static fr.dawan.myskills.constants.ParamConstants.PAGE_SIZE;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public abstract class GenericController <D extends BaseEntityDto, S extends Gene
     protected final S service;
 
     @GetMapping
-    public ResponseEntity<Page<D>> findAll(Pageable page) {
+    public ResponseEntity<Page<D>> findAll(@PageableDefault(size = PAGE_SIZE) Pageable page) {
         return ResponseEntity.ok(service.findAll(page));
     }
     @GetMapping("/unpaged")

@@ -1,6 +1,5 @@
 package fr.dawan.myskills.controllers;
 
-import fr.dawan.myskills.constants.ParamConstants;
 import fr.dawan.myskills.dtos.QuestionDto;
 import fr.dawan.myskills.generic.GenericController;
 import fr.dawan.myskills.services.QuestionService;
