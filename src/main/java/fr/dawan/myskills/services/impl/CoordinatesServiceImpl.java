@@ -6,7 +6,9 @@ import fr.dawan.myskills.generic.GenericServiceImpl;
 import fr.dawan.myskills.mappers.CoordinatesMapper;
 import fr.dawan.myskills.repositories.CoordinatesRepository;
 import fr.dawan.myskills.services.CoordinatesService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CoordinatesServiceImpl extends GenericServiceImpl<Coordinates, CoordinatesDto, CoordinatesRepository, CoordinatesMapper> implements CoordinatesService {
 	public CoordinatesServiceImpl(CoordinatesRepository repository, CoordinatesMapper mapper) {
 		super(repository, mapper);
