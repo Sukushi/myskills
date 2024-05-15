@@ -1,7 +1,9 @@
 package fr.dawan.myskills.controllers;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.Optional;
 
 public interface AliasableController<D> {
-    public Optional<D> findByAlias(String alias);
+    public ResponseEntity<D> findByAlias(String alias);
 }

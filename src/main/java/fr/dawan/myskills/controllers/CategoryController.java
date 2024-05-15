@@ -2,6 +2,7 @@ package fr.dawan.myskills.controllers;
 
 import fr.dawan.myskills.dtos.CategoryDto;
 import fr.dawan.myskills.entities.Category;
+import fr.dawan.myskills.exceptions.NotFoundException;
 import fr.dawan.myskills.generic.GenericController;
 import fr.dawan.myskills.services.AliasableService;
 import fr.dawan.myskills.services.CategoryService;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/categories")
 public class CategoryController extends GenericController<CategoryDto, CategoryService> implements AliasableController<CategoryDto> {
 
     public CategoryController(CategoryService service) {
@@ -22,14 +23,9 @@ public class CategoryController extends GenericController<CategoryDto, CategoryS
     }
 
     @Override
-    @GetMapping(value = "/alias/{categoryAlias}")
-    public Optional<CategoryDto> findByAlias(@PathVariable String categoryAlias) {
-        return service.findByAlias(categoryAlias);
+    @GetMapping(value = "/alias/{alias}")
+    public ResponseEntity<CategoryDto> findByAlias(@PathVariable String alias) {
+		return service.findByAlias(alias).map(ResponseEntity::ok).orElseThrow(() -> new NotFoundException(String.format("Aucun alias nommé '%s' dans les catégories.",alias)));
     }
-    @PostMapping(value = "/admin")
-    public ResponseEntity<CategoryDto> create(@RequestBody CategoryDto categoryDto) {
-        return new ResponseEntity<>(service.saveOrUpdate(categoryDto), HttpStatus.CREATED);
-    }
-
 
 }
