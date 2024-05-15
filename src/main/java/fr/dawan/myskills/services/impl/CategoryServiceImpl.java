@@ -7,9 +7,11 @@ import fr.dawan.myskills.mappers.CategoryMapper;
 import fr.dawan.myskills.repositories.CategoryRepository;
 import fr.dawan.myskills.services.AliasableService;
 import fr.dawan.myskills.services.CategoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class CategoryServiceImpl extends GenericServiceImpl<Category,CategoryDto,CategoryRepository,CategoryMapper> implements CategoryService, AliasableService<CategoryDto> {
 	public CategoryServiceImpl(CategoryRepository repository, CategoryMapper mapper) {
 		super(repository, mapper);
