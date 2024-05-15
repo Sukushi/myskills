@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 public interface UserService extends GenericService<UserDto> {
-	Optional<UserDto> findByEmailAndAuthTokenAndEnabled(String email, String token, boolean enabled);
 	Optional<UserDto> findByEmail(String email);
 	Optional<UserDto> findByAuthToken(String token);
 	Page<UserDto> findAllByAuthority(String authority, Pageable page);

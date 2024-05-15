@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	Optional<User> findByEmailAndAuthTokenAndEnabled(String email, String token, boolean enabled);
 	Optional<User> findByEmail(String email);
 	Optional<User> findByAuthToken(String token);
 	@Query("SELECT u FROM User u JOIN u.authorities a WHERE a.authority = :authority")

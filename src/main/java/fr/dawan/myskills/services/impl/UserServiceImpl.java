@@ -19,11 +19,6 @@ public class UserServiceImpl extends GenericServiceImpl<User, UserDto, UserRepos
 	}
 	
 	@Override
-	public Optional<UserDto> findByEmailAndAuthTokenAndEnabled(String email, String token, boolean enabled) {
-		return repository.findByEmailAndAuthTokenAndEnabled(email,token,enabled).map(mapper::toDto);
-	}
-	
-	@Override
 	public Optional<UserDto> findByEmail(String email) {
 		return repository.findByEmail(email).map(mapper::toDto);
 	}
