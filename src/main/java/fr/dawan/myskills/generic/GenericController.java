@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -36,6 +37,10 @@ public abstract class GenericController <D extends BaseEntityDto, S extends Gene
 			return new ResponseEntity<>(service.saveOrUpdate(dto), HttpStatus.CREATED);
 		return ResponseEntity.ok(service.saveOrUpdate(dto));
     }
+	@PostMapping("/list")
+	public ResponseEntity<List<D>> saveAll(@RequestBody List<D> listDto) {
+		return ResponseEntity.ok(service.saveAll(listDto));
+	}
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable long id) {
         service.deleteById(id);

@@ -22,19 +22,19 @@ public class UserController extends GenericController<UserDto, UserService> {
 		super(service);
 	}
 	
-	@GetMapping("/{email}")
+	@GetMapping("/email/{email}")
 	public ResponseEntity<UserDto> findByEmail(@PathVariable String email) {
 		// .map(u -> new ResponseEntity<>(u,HttpStatus.OK))
 		return service.findByEmail(email).map(ResponseEntity::ok).orElseThrow(() -> new NotFoundException(String.format("L'email %s ne correspond à aucun utilisateur.", email)));
 	}
 	
-	@GetMapping("/{token}")
+	@GetMapping("/token/{token}")
 	public ResponseEntity<UserDto> findByAuthToken(@PathVariable String token) {
 		// .map(u -> new ResponseEntity<>(u,HttpStatus.OK))
 		return service.findByAuthToken(token).map(ResponseEntity::ok).orElseThrow(() -> new NotFoundException(String.format("Le token %s ne correspond à aucun utilisateur.", token)));
 	}
 	
-	@GetMapping("/all/{authority}")
+	@GetMapping("/authority/{authority}")
 	public ResponseEntity<Page<UserDto>> findAllByAuthority(@PathVariable String authority, @PageableDefault(size = 20, page = 0) Pageable page) {
 		return ResponseEntity.ok(service.findAllByAuthority(authority,page));
 	}
