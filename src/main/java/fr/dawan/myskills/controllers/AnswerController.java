@@ -15,15 +15,17 @@ import java.util.List;
 @MultipartConfig
 @RestController
 @RequestMapping()
-public class AnswerControllers extends GenericController<AnswerDto, AnswerService> {
-    private AnswerService answerService;
-    public AnswerControllers(AnswerService service) {
+public class AnswerController extends GenericController<AnswerDto, AnswerService> {
+
+    public AnswerController(AnswerService service) {
         super(service);
-        this.answerService = service;
     }
     @PostMapping()
     public ResponseEntity<AnswerDto> addAnswer(@RequestBody AnswerDto answerDto) {
-        return  ResponseEntity.ok(answerService.saveOrUpdate(answerDto));
+        return  ResponseEntity.ok(service.saveOrUpdate(answerDto));
     }
-
+    @PostMapping(value = "/list")
+    public ResponseEntity<List<AnswerDto>> addMultipleAnswer(@RequestBody List<AnswerDto> answerDto) {
+        return ResponseEntity.ok(service.saveAll(answerDto));
+    }
 }

@@ -6,7 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public abstract class GenericServiceImpl<E extends BaseEntity,D,
@@ -27,6 +29,11 @@ public abstract class GenericServiceImpl<E extends BaseEntity,D,
 	@Override
 	public D saveOrUpdate(D dto) {
 		return mapper.toDto(repository.save(mapper.toEntity(dto)));
+	}
+	@Override
+	public List<D> saveAll(List<D> dtoList) {
+		dtoList = (List<D>) dtoList.stream().map(dto -> repository.save(mapper.toEntity(dto)));
+		return dtoList;
 	}
 	@Override
 	public void deleteById(long id) {
