@@ -1,7 +1,6 @@
 package fr.dawan.myskills.services.impl;
 
 import fr.dawan.myskills.dtos.QuizDto;
-import fr.dawan.myskills.dtos.ThemeDto;
 import fr.dawan.myskills.entities.Quiz;
 import fr.dawan.myskills.entities.enums.QuizStatusEnum;
 import fr.dawan.myskills.generic.GenericServiceImpl;

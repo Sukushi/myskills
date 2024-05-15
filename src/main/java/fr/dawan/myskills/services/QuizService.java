@@ -7,7 +7,7 @@ import fr.dawan.myskills.generic.GenericService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface QuizService extends GenericService<QuizDto> {
+public interface QuizService extends GenericService<QuizDto>, AliasableService<QuizDto> {
 	Page<QuizDto> findAllByThemeId(Long themeId, Pageable page);
 	
 	Page<QuizDto> findAllByNameContaining(String name, Pageable page);
