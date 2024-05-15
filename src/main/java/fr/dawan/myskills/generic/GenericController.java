@@ -15,8 +15,8 @@ public abstract class GenericController <D, S extends GenericService<D>> {
     protected final S service;
 
     @GetMapping
-    public Page<D> findAll(Pageable pageable) {
-        return service.findAll(pageable);
+    public Page<D> findAll(Pageable page) {
+        return service.findAll(page);
     }
     @GetMapping("/unpaged")
     public Page<D> findAll() {

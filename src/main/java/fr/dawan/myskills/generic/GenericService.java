@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public interface GenericService<D> {
-	Page<D> findAll(Pageable pageable);
+	Page<D> findAll(Pageable page);
 	Optional<D> findById(long id);
 	D saveOrUpdate(D entity);
 	List<D> saveAll(List<D> entities);

@@ -27,22 +27,22 @@ public class QuizServiceImpl extends GenericServiceImpl<Quiz, QuizDto, QuizRepos
 	}
 	
 	@Override
-	public Page<QuizDto> findAllByThemeId(Long themeId, Pageable pageable) {
-		return repository.findAllByThemeId(themeId,pageable).map(mapper::toDto);
+	public Page<QuizDto> findAllByThemeId(Long themeId, Pageable page) {
+		return repository.findAllByThemeId(themeId,page).map(mapper::toDto);
 	}
 	
 	@Override
-	public Page<QuizDto> findAllByNameContaining(String name, Pageable pageable) {
-		return repository.findAllByNameContaining(name,pageable).map(mapper::toDto);
+	public Page<QuizDto> findAllByNameContaining(String name, Pageable page) {
+		return repository.findAllByNameContaining(name,page).map(mapper::toDto);
 	}
 	
 	@Override
-	public Page<QuizDto> findAllByNameContainingAndStatus(String name, QuizStatusEnum status, Pageable pageable) {
-		return repository.findAllByNameContainingAndStatus(name,status,pageable).map(mapper::toDto);
+	public Page<QuizDto> findAllByNameContainingAndStatus(String name, QuizStatusEnum status, Pageable page) {
+		return repository.findAllByNameContainingAndStatus(name,status,page).map(mapper::toDto);
 	}
 	
 	@Override
-	public Page<QuizDto> findAllFavoriteFromUser(Long userId, Pageable pageable) {
-		return repository.findAllFavoriteFromUser(userId,pageable).map(mapper::toDto);
+	public Page<QuizDto> findAllFavoriteFromUser(Long userId, Pageable page) {
+		return repository.findAllFavoriteFromUser(userId,page).map(mapper::toDto);
 	}
 }

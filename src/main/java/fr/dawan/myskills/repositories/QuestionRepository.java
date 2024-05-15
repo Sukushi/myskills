@@ -18,26 +18,26 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 	/**
 	 * Recherche paginée des questions qui contiennent le mot clé dans leur texte
 	 * @param text
-	 * @param pageable
+	 * @param page
 	 * @return Une page de {@link Question} dont le texte contient le terme
 	 */
-	Page<Question> findByTextContaining(String text, Pageable pageable);
+	Page<Question> findByTextContaining(String text, Pageable page);
 	
 	/**
 	 * Retourne toutes les questions qui sont liées au quiz dont on passe l'id
 	 * @param quizId
-	 * @param pageable
+	 * @param page
 	 * @return Une page de {@link Question} liée à un Quiz
 	 */
 	@Query("SELECT q FROM Question q JOIN q.quizzes qu WHERE qu.id = :quizId")
-	Page<Question> findByQuizId(@Param("quizId") Long quizId, Pageable pageable);
+	Page<Question> findByQuizId(@Param("quizId") Long quizId, Pageable page);
 	
 	/**
 	 * Retourne toutes les questions qui sont liées au thème dont on passe l'id
 	 * @param themeId
-	 * @param pageable
+	 * @param page
 	 * @return Une page de {@link Question} liée à un Theme
 	 */
 	@Query("SELECT q FROM Question q JOIN q.themes t WHERE t.id = :themeId")
-	Page<Question> findByThemeId(@Param("themeId") Long themeId, Pageable pageable);
+	Page<Question> findByThemeId(@Param("themeId") Long themeId, Pageable page);
 }

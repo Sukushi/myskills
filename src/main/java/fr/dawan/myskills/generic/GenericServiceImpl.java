@@ -19,8 +19,8 @@ public abstract class GenericServiceImpl<E extends BaseEntity,D,
 	protected final M mapper;
 	
 	@Override
-	public Page<D> findAll(Pageable pageable) {
-		return repository.findAll(pageable).map(mapper::toDto);
+	public Page<D> findAll(Pageable page) {
+		return repository.findAll(page).map(mapper::toDto);
 	}
 	@Override
 	public Optional<D> findById(long id) {

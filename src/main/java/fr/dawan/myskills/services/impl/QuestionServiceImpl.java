@@ -17,17 +17,17 @@ public class QuestionServiceImpl extends GenericServiceImpl<Question, QuestionDt
 	}
 	
 	@Override
-	public Page<QuestionDto> findByTextContaining(String text, Pageable pageable) {
-		return repository.findByTextContaining(text,pageable).map(mapper::toDto);
+	public Page<QuestionDto> findByTextContaining(String text, Pageable page) {
+		return repository.findByTextContaining(text,page).map(mapper::toDto);
 	}
 	
 	@Override
-	public Page<QuestionDto> findByQuizId(Long quizId, Pageable pageable) {
-		return repository.findByQuizId(quizId,pageable).map(mapper::toDto);
+	public Page<QuestionDto> findByQuizId(Long quizId, Pageable page) {
+		return repository.findByQuizId(quizId,page).map(mapper::toDto);
 	}
 	
 	@Override
-	public Page<QuestionDto> findByThemeId(Long themeId, Pageable pageable) {
-		return repository.findByThemeId(themeId,pageable).map(mapper::toDto);
+	public Page<QuestionDto> findByThemeId(Long themeId, Pageable page) {
+		return repository.findByThemeId(themeId,page).map(mapper::toDto);
 	}
 }

@@ -8,11 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface QuizService extends GenericService<QuizDto> {
-	Page<QuizDto> findAllByThemeId(Long themeId, Pageable pageable);
+	Page<QuizDto> findAllByThemeId(Long themeId, Pageable page);
 	
-	Page<QuizDto> findAllByNameContaining(String name, Pageable pageable);
+	Page<QuizDto> findAllByNameContaining(String name, Pageable page);
 	
-	Page<QuizDto> findAllByNameContainingAndStatus(String name, QuizStatusEnum status, Pageable pageable);
+	Page<QuizDto> findAllByNameContainingAndStatus(String name, QuizStatusEnum status, Pageable page);
 	
-	Page<QuizDto> findAllFavoriteFromUser(Long userId, Pageable pageable);
+	Page<QuizDto> findAllFavoriteFromUser(Long userId, Pageable page);
 }

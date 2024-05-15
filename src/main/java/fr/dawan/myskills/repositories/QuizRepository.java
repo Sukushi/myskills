@@ -12,20 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz,Long>, AliasableRepository<Quiz> {
-	Page<Quiz> findAllByThemeId(Long themeId, Pageable pageable);
+	Page<Quiz> findAllByThemeId(Long themeId, Pageable page);
 	
 	/**
 	 * Recherche paginée des quizzes qui contiennent le mot clé dans leur nom
 	 * @see #findAllByNameContainingAndStatus (String, QuizStatusEnum, Pageable) En fonction de leur statut
 	 * @param name
-	 * @param pageable
+	 * @param page
 	 * @return
 	 */
-	Page<Quiz> findAllByNameContaining(String name, Pageable pageable);
+	Page<Quiz> findAllByNameContaining(String name, Pageable page);
 	
-	Page<Quiz> findAllByNameContainingAndStatus(String name, QuizStatusEnum status, Pageable pageable);
+	Page<Quiz> findAllByNameContainingAndStatus(String name, QuizStatusEnum status, Pageable page);
 	
 	@Query(value = "SELECT * FROM t_quiz q left join t_users_quiz_favorite uqf ON uqf.quiz_favorite_id = q.id WHERE uqf.user_favorite_id = :userId", nativeQuery = true)
-	Page<Quiz> findAllFavoriteFromUser(Long userId, Pageable pageable);
+	Page<Quiz> findAllFavoriteFromUser(Long userId, Pageable page);
 	
 }
