@@ -6,15 +6,16 @@ import fr.dawan.myskills.entities.UserResult;
 import fr.dawan.myskills.entities.enums.LevelEnum;
 import fr.dawan.myskills.entities.enums.QuizStatusEnum;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.util.Set;
 
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
+@Accessors(chain = true)
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class QuizDto extends BaseEntityDto implements AliasableDto {
     private String name;
 	private String alias;

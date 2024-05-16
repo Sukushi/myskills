@@ -7,6 +7,7 @@ import fr.dawan.myskills.entities.enums.LevelEnum;
 import fr.dawan.myskills.entities.enums.QuestionStatusEnum;
 import fr.dawan.myskills.entities.enums.QuestionTypeEnum;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,9 +16,9 @@ import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
+@Accessors(chain = true)
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class QuestionDto extends BaseEntityDto {
     private String text;
     private ImageDto img;

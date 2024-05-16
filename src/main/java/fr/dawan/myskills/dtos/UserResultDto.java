@@ -1,6 +1,7 @@
 package fr.dawan.myskills.dtos;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
+@Accessors(chain = true)
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class UserResultDto extends BaseEntityDto {
     private QuizDto quiz;
     private UserDto user;

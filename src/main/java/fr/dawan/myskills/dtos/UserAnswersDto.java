@@ -2,13 +2,14 @@ package fr.dawan.myskills.dtos;
 
 import fr.dawan.myskills.entities.UserResult;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
+@Accessors(chain = true)
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class UserAnswersDto extends BaseEntityDto {
     private String text;
     private boolean correct;

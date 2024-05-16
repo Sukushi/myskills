@@ -4,6 +4,7 @@ import fr.dawan.myskills.entities.Authority;
 import fr.dawan.myskills.entities.UserResult;
 import fr.dawan.myskills.entities.enums.Title;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,9 +13,9 @@ import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
+@Accessors(chain = true)
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class UserDto extends BaseEntityDto {
     private String username;
     private String email;
