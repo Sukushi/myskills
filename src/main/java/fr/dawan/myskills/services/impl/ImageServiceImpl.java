@@ -8,8 +8,11 @@ import fr.dawan.myskills.exceptions.NotFoundException;
 import fr.dawan.myskills.generic.GenericServiceImpl;
 import fr.dawan.myskills.mappers.ImageMapper;
 import fr.dawan.myskills.repositories.ImageRepository;
+import fr.dawan.myskills.repositories.QuestionRepository;
 import fr.dawan.myskills.services.ImageService;
 import fr.dawan.myskills.tools.AliasGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,8 +28,12 @@ import static fr.dawan.myskills.constants.ParamConstants.*;
 
 @Service
 public class ImageServiceImpl extends GenericServiceImpl<Image, ImageDto, ImageRepository, ImageMapper> implements ImageService {
-	public ImageServiceImpl(ImageRepository repository, ImageMapper mapper) {
+	private static final Logger log = LoggerFactory.getLogger(ImageServiceImpl.class);
+	private final QuestionRepository questionRepository;
+
+	public ImageServiceImpl(ImageRepository repository, ImageMapper mapper, QuestionRepository questionRepository) {
 		super(repository, mapper);
+		this.questionRepository = questionRepository;
 	}
 	
 	@Value("${images.directory.root:shared}")
@@ -64,7 +71,7 @@ public class ImageServiceImpl extends GenericServiceImpl<Image, ImageDto, ImageR
 			throw new FileException();
 		}
 	}
-	
+
 	private Image createOnServer(MultipartFile multipartFile) {
 		// 1- récupérer les données de l'image envoyée par le client
 		String originalFilename = multipartFile.getOriginalFilename();
@@ -111,8 +118,9 @@ public class ImageServiceImpl extends GenericServiceImpl<Image, ImageDto, ImageR
 		}
 		return fileName + increment;
 	}
-	
-	private String getMimeType(String fileName) {
+
+	@Override
+	public String getMimeType(String fileName) {
 		String ext = getFileExtension(fileName);
 		String mimeType;
 		if (ext == null)
@@ -131,7 +139,38 @@ public class ImageServiceImpl extends GenericServiceImpl<Image, ImageDto, ImageR
 		String[] split = fileName.split("\\.");
 		return split.length > 1 ? split[split.length - 1].toLowerCase() : null;
 	}
-	
+
+	@Override
+	public byte[] getImageBytes(String filename) {
+
+		if (filename != null && repository.existsBySourceEquals(filename)) {
+			File file = new File(IMAGE_ROOT + File.separator + filename);
+
+			try {
+				return Files.readAllBytes(file.toPath());
+			} catch (IOException e) {
+				throw new FileException();
+			}
+		} else {
+			throw new FileException();
+		}
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		Optional<ImageDto> img = findById(id);
+		if (img.isPresent()) {
+			String fileName = IMAGE_ROOT + File.separator + img.get().getSource();
+			File file = new File(fileName);
+			//questionRepository.deleteImageQuestion(id);
+			repository.deleteById(id);
+			if (!file.delete()) {
+				log.error("Suppression de l'image physique impossible ");
+			}
+			return true;
+		}
+		return false;
+	}
 	/*public Optional<String> getExtensionByStringHandling(String filename) {
 		return Optional.ofNullable(filename)
 				.filter(f -> f.contains("."))
