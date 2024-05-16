@@ -34,11 +34,7 @@ public class ImageController extends GenericController<ImageDto, ImageService> {
 
     @Override
     public void deleteById(@PathVariable long id) {
-        try {
-            service.delete(id);
-        } catch (IOException e) {
-            throw new ImageException("Image impossible a supprimer");
-        }
+        service.deleteById(id);
     }
 
 }
