@@ -26,8 +26,8 @@ public class Image extends BaseEntity {
 	
 	private String mimeType; // type mime pour faciliter le traitement par les controllers
 	
-	@PreRemove
+	/*@PreRemove
 	private void preRemove() {
 		// TODO : Supprimer le fichier image physique du système de fichiers ou du stockage cloud...
-	}
+	}*/
 }

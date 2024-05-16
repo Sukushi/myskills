@@ -11,13 +11,4 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
     Answer findByImgId(Long imageId);
-
-    @Modifying
-    @Query("UPDATE Answer a SET a.img = NULL WHERE a.img.id = :id")
-    void deleteImageAnswer(long id);
-
-
-    @Modifying
-    @Query("UPDATE UserAnswers a SET a.img = NULL WHERE a.img.id = :id")
-    void deleteImageUserAnswer(long id);
 }

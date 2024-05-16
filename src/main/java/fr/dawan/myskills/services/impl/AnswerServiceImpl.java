@@ -14,11 +14,6 @@ public class AnswerServiceImpl extends GenericServiceImpl<Answer,AnswerDto,Answe
 	public AnswerServiceImpl(AnswerRepository repository, AnswerMapper mapper) {
 		super(repository, mapper);
 	}
-	@Override
-	public void deleteImage(long id) {
-		repository.deleteImageAnswer(id);
-		repository.deleteImageUserAnswer(id);
-	}
 
 	/**
 	 * Récupère l'id d'une réponse par l'id d'une image

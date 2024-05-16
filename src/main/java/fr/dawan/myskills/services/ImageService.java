@@ -4,6 +4,7 @@ import fr.dawan.myskills.dtos.ImageDto;
 import fr.dawan.myskills.generic.GenericService;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public interface ImageService extends GenericService<ImageDto> {
@@ -11,6 +12,5 @@ public interface ImageService extends GenericService<ImageDto> {
 	ImageDto save(MultipartFile file);
 	ImageDto update(Long id, MultipartFile file);
 	byte[] getImageBytes(String filename);
-	String getMimeType(String fileName);
-	public boolean delete(Long id);
+
 }
