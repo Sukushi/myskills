@@ -2,7 +2,6 @@ package fr.dawan.myskills.generic;
 
 import fr.dawan.myskills.dtos.BaseEntityDto;
 import fr.dawan.myskills.exceptions.NotFoundException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +14,6 @@ import java.util.List;
 
 import static fr.dawan.myskills.constants.ParamConstants.PAGE_SIZE;
 
-@AllArgsConstructor
 @RequiredArgsConstructor
 @RestController
 public abstract class GenericController <D extends BaseEntityDto, S extends GenericService<D>> {
