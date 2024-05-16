@@ -1,5 +1,6 @@
 package fr.dawan.myskills.tools;
 
+import fr.dawan.myskills.exceptions.FileException;
 import fr.dawan.myskills.exceptions.InvalideAliasException;
 import fr.dawan.myskills.repositories.AliasableRepository;
 
@@ -53,7 +54,7 @@ public class AliasGenerator {
 	 * @throws InvalideAliasException si le texte est null ou constitué uniquement d'espaces ou de caractères spéciaux
      */
     public static String normalize(String text) {
-        if (text == null || text.trim().isEmpty()) throw new InvalideAliasException("chaîne vide");
+        if (isEmptyOrNull(text)) throw new InvalideAliasException("chaîne vide");
 
         String aliasNormalized = Normalizer.normalize(text, Normalizer.Form.NFKD) // Les caractères sont décomposés par équivalence canonique et de compatibilité, et sont réordonnés.
 				.toLowerCase()
@@ -69,4 +70,22 @@ public class AliasGenerator {
             throw new InvalideAliasException("utilisez des caractères alphanumériques non spéciaux");
         return aliasNormalized;
     }
+	
+	public static String normalizeFile(String fileName) {
+		if (isEmptyOrNull(fileName)) {
+			throw new FileException("chaîne vide");
+		}
+		int indexSeparator = fileName.lastIndexOf(".");
+		if (indexSeparator == -1) {
+			return normalize(fileName);
+		}
+		return String.format("%s.%s",
+				normalize(fileName.substring(0, indexSeparator)),
+				fileName.substring(indexSeparator)
+		);
+	}
+	
+	private static boolean isEmptyOrNull(String str) {
+		return str == null || str.trim().isEmpty();
+	}
 }

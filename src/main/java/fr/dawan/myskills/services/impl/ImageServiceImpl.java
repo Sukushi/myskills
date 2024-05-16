@@ -90,7 +90,7 @@ public class ImageServiceImpl extends GenericServiceImpl<Image, ImageDto, ImageR
 		}
 		
 		// 2- on récupère un nom de fichier avec un format prédéfini pour notre serveur
-		String normalizeName = AliasGenerator.normalize(originalFilename);
+		String normalizeName = AliasGenerator.normalizeFile(originalFilename);
 		if (repository.findBySource(normalizeName).isPresent()) {
 			normalizeName = getFileNameNotUsed(normalizeName);
 		}
