@@ -116,11 +116,15 @@ public class ImageServiceImpl extends GenericServiceImpl<Image, ImageDto, ImageR
 	
 	private String getFileNameNotUsed(String fileName) {
 		int increment = 1;
-		fileName += "_";
-		while (repository.findBySource(fileName+increment).isPresent()) {
+		
+		int indexSeparator = fileName.lastIndexOf(".");
+		String name = fileName.substring(0, indexSeparator);
+		String ext = fileName.substring(indexSeparator);
+		
+		while (repository.findBySource(String.format("%s_%s%s", name,increment,ext)).isPresent()) {
 			increment++;
 		}
-		return fileName + increment;
+		return String.format("%s_%s%s", name,increment,ext);
 	}
 
 

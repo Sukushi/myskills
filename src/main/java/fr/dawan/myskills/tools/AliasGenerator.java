@@ -79,7 +79,7 @@ public class AliasGenerator {
 		if (indexSeparator == -1) {
 			return normalize(fileName);
 		}
-		return String.format("%s.%s",
+		return String.format("%s%s",
 				normalize(fileName.substring(0, indexSeparator)),
 				fileName.substring(indexSeparator)
 		);
